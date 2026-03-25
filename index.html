@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Unit Registration</title>
+  <title>Student Registration - o608-hub.github.io</title>
   <style>
     :root {
       --primary: #17A2B8;
@@ -12,63 +12,68 @@
       --neutral: #E9ECEF;
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      margin: 0;
-      padding: 20px;
+      padding: 20px 10px;
+      line-height: 1.5;
     }
 
-    .container {
-      max-width: 700px;
-      margin: 40px auto;
+    .form-container {
+      max-width: 520px;
+      margin: 0 auto;
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       overflow: hidden;
     }
 
-    .header {
-      background: var(--primary);
-      color: white;
-      padding: 25px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
+    .section {
+      padding: 25px 20px;
+      background: #FFF9E6;           /* Light yellow tint like original */
     }
 
-    .form-section {
-      padding: 30px;
+    .section + .section {
+      border-top: 1px solid #eee;
     }
 
     h2 {
       color: var(--primary);
-      margin-top: 0;
-      border-bottom: 2px solid var(--neutral);
-      padding-bottom: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      font-weight: 700;
     }
 
     label {
       display: block;
-      margin: 15px 0 5px;
+      margin: 12px 0 6px;
       font-weight: 600;
-      color: #34495E;
+      font-size: 15px;
+      color: #2C3E50;
     }
 
-    input, select, textarea {
+    input[type="text"], 
+    input[type="email"], 
+    input[type="tel"], 
+    input[type="date"],
+    select,
+    textarea {
       width: 100%;
-      padding: 12px 15px;
+      padding: 12px 14px;
       border: 2px solid var(--neutral);
-      border-radius: 8px;
+      border-radius: 6px;
+      background: white;
       font-size: 16px;
-      transition: all 0.3s;
+      color: var(--text);
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: var(--primary);
       outline: none;
-      box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.15);
     }
 
     .buttons {
@@ -78,154 +83,141 @@
     }
 
     button {
-      padding: 14px 30px;
+      flex: 1;
+      padding: 14px;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s;
     }
 
     .btn-submit {
       background: var(--primary);
       color: white;
-      flex: 1;
     }
 
     .btn-submit:hover {
       background: #138496;
-      transform: translateY(-2px);
     }
 
     .btn-reset {
-      background: #E9ECEF;
-      color: var(--text);
-      flex: 1;
+      background: #F9C74F;        /* Bright yellow like original */
+      color: #2C3E50;
     }
 
     .btn-reset:hover {
-      background: #dee2e6;
+      background: #f4b93a;
     }
 
-    /* Menu Simulation */
-    .menu-bar {
-      background: #2C3E50;
+    /* Top blue bar like original */
+    .top-bar {
+      background: #0066CC;
       color: white;
       padding: 8px 15px;
+      font-size: 15px;
       display: flex;
       gap: 25px;
-      font-size: 15px;
     }
 
-    .menu-item {
+    .top-bar span {
       cursor: pointer;
-      padding: 5px 10px;
-      border-radius: 4px;
-    }
-
-    .menu-item:hover {
-      background: rgba(255,255,255,0.15);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Menu Bar -->
-  <div class="menu-bar">
-    <div class="menu-item"><strong>File</strong>
-      <span style="font-size:12px; opacity:0.8;">▼</span>
-    </div>
-    <div class="menu-item"><strong>Edit</strong>
-      <span style="font-size:12px; opacity:0.8;">▼</span>
-    </div>
-    <div class="menu-item"><strong>Format</strong>
-      <span style="font-size:12px; opacity:0.8;">▼</span>
-    </div>
+  <!-- Top menu bar -->
+  <div class="top-bar">
+    <span><strong>File</strong></span>
+    <span><strong>Edit</strong></span>
+    <span><strong>Format</strong></span>
   </div>
 
-  <div class="container">
+  <div class="form-container">
 
     <!-- Student Registration -->
-    <div class="header">Student Registration</div>
-    <div class="form-section">
+    <div class="section">
+      <h2>Student Registration</h2>
+
       <label>Full Name</label>
-      <input type="text" placeholder="Enter your full name" required/>
+      <input type="text" placeholder="">
 
       <label>Student ID</label>
-      <input type="text" placeholder="e.g. BCOM/12345/2023" required/>
+      <input type="text" placeholder="">
 
       <label>Email</label>
-      <input type="email" placeholder="student@university.ac.ke" required/>
+      <input type="email" placeholder="">
 
       <label>Phone Number</label>
-      <input type="tel" placeholder="+254 7XX XXX XXX" required/>
+      <input type="tel" placeholder="">
 
       <label>Date of Birth</label>
-      <input type="date" required/>
+      <input type="date">
 
       <label>Gender</label>
-      <select required>
-        <option value="">Select Gender</option>
+      <select>
+        <option>Select Gender</option>
         <option>Male</option>
         <option>Female</option>
         <option>Other</option>
       </select>
 
       <label>Course/Program</label>
-      <input type="text" placeholder="e.g. Bachelor of Commerce" required/>
+      <input type="text" placeholder="">
 
       <label>Year of Study</label>
-      <select required>
-        <option value="">Select Year</option>
+      <select>
+        <option>Select Year</option>
         <option>Year 1</option>
         <option>Year 2</option>
         <option>Year 3</option>
         <option>Year 4</option>
-        <option>Year 5</option>
       </select>
 
       <label>Address</label>
-      <textarea rows="2" placeholder="Enter your current address"></textarea>
+      <textarea rows="3"></textarea>
 
       <label>Additional Comments</label>
-      <textarea rows="3" placeholder="Any special requests or notes..."></textarea>
+      <textarea rows="4"></textarea>
 
       <div class="buttons">
-        <button class="btn-submit">Submit Registration</button>
+        <button class="btn-submit">Submit</button>
         <button class="btn-reset">Reset</button>
       </div>
     </div>
 
     <!-- Unit Registration -->
-    <div class="header">Unit Registration</div>
-    <div class="form-section">
+    <div class="section">
+      <h2>Unit Registration</h2>
+
       <label>Unit Name</label>
-      <input type="text" placeholder="e.g. Financial Accounting II" required/>
+      <input type="text" placeholder="">
 
       <label>Unit Code</label>
-      <input type="text" placeholder="e.g. ACC 202" required/>
+      <input type="text" placeholder="">
 
       <label>Lecturer</label>
-      <input type="text" placeholder="Dr. Jane Mwangi" />
+      <input type="text" placeholder="">
 
       <label>Semester</label>
-      <select required>
-        <option value="">Select Semester</option>
+      <select>
+        <option>Select Semester</option>
         <option>Semester 1</option>
         <option>Semester 2</option>
       </select>
 
-      <label style="display: flex; align-items: center; gap: 10px; margin-top: 15px;">
-        <input type="checkbox" style="width:auto;"/>
-        <span>Active Unit (Currently Enrolled)</span>
+      <label style="margin-top: 18px; display: flex; align-items: center; gap: 10px;">
+        <input type="checkbox" style="width: auto; transform: scale(1.2);">
+        Active Unit
       </label>
 
       <div class="buttons">
-        <button class="btn-submit">Register Unit</button>
+        <button class="btn-submit">Register</button>
         <button class="btn-reset">Reset</button>
       </div>
     </div>
+
   </div>
 
 </body>
