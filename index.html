@@ -1,110 +1,159 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Form with Menu</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    /* Menu styling */
-    .menu-bar {
-      background: #4CAF50;
-      padding: 10px;
-      display: flex;
-      gap: 20px;
-    }
-    .menu-item {
-      position: relative;
-      color: white;
-      cursor: pointer;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      background: #f9f9f9;
-      min-width: 150px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    .dropdown a {
-      display: block;
-      padding: 8px;
-      text-decoration: none;
-      color: black;
-    }
-    .dropdown a:hover {
-      background: #ddd;
-    }
-    .menu-item:hover .dropdown {
-      display: block;
-    }
-    /* Form styling */
-    form {
-      margin-top: 20px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      background: #f4f4f4;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-    }
-    button {
-      margin-top: 15px;
-      padding: 10px 15px;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Student Unit Registration</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FAFAFA;
+    color: #2C3E50;
+    margin: 0;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    background-color: #00B4D8;
+    padding: 10px;
+}
+
+.menu-item {
+    position: relative;
+    margin-right: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #E9ECEF;
+    color: #2C3E50;
+    padding: 10px;
+}
+
+.menu-item:hover .dropdown {
+    display: block;
+}
+
+/* FORM */
+.container {
+    width: 60%;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #E9ECEF;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #00B4D8;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+</style>
+
 </head>
+
 <body>
 
-  <!-- Menu Bar -->
-  <div class="menu-bar">
+<!-- MENU -->
+<div class="menu">
     <div class="menu-item">File
-      <div class="dropdown">
-        <a href="#">New → Form</a>
-      </div>
+        <div class="dropdown">
+            <p onclick="newForm()">New Form</p>
+        </div>
     </div>
+
     <div class="menu-item">Edit
-      <div class="dropdown">
-        <a href="#">Cut</a>
-        <a href="#">Copy</a>
-        <a href="#">Paste</a>
-      </div>
+        <div class="dropdown">
+            <p onclick="cutText()">Cut</p>
+            <p onclick="copyText()">Copy</p>
+            <p onclick="pasteText()">Paste</p>
+        </div>
     </div>
+
     <div class="menu-item">Format
-      <div class="dropdown">
-        <a href="#">Italic</a>
-        <a href="#">Underline</a>
-        <a href="#">Bold</a>
-      </div>
+        <div class="dropdown">
+            <p onclick="formatText('italic')">Italic</p>
+            <p onclick="formatText('underline')">Underline</p>
+            <p onclick="formatText('bold')">Bold</p>
+        </div>
     </div>
-  </div>
+</div>
 
-  <!-- Skeleton Form -->
-  <form>
-    <h2>Sample Form</h2>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
+<!-- FORM -->
+<div class="container">
+    <h2>Student Unit Registration</h2>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
+    <form id="registrationForm">
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Registration Number" required>
 
-    <label for="comments">Comments:</label>
-    <textarea id="comments" name="comments"></textarea>
+        <select required>
+            <option value="">Select Course</option>
+            <option>Computer Science</option>
+            <option>Information Technology</option>
+            <option>Business</option>
+        </select>
 
-    <button type="submit">Submit</button>
-  </form>
+        <textarea id="textArea" placeholder="Additional Notes"></textarea>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+let clipboard = "";
+
+function newForm() {
+    document.getElementById("registrationForm").reset();
+}
+
+function cutText() {
+    let textArea = document.getElementById("textArea");
+    clipboard = textArea.value;
+    textArea.value = "";
+}
+
+function copyText() {
+    let textArea = document.getElementById("textArea");
+    clipboard = textArea.value;
+}
+
+function pasteText() {
+    let textArea = document.getElementById("textArea");
+    textArea.value += clipboard;
+}
+
+function formatText(type) {
+    let textArea = document.getElementById("textArea");
+
+    if (type === "bold") {
+        textArea.style.fontWeight = "bold";
+    } 
+    else if (type === "italic") {
+        textArea.style.fontStyle = "italic";
+    } 
+    else if (type === "underline") {
+        textArea.style.textDecoration = "underline";
+    }
+}
+</script>
 
 </body>
 </html>
