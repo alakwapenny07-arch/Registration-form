@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Registration - o608-hub.github.io</title>
+  <title>Student Unit Registration - CAT 2</title>
   <style>
     :root {
       --primary: #17A2B8;
@@ -18,13 +19,69 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      padding: 20px 10px;
-      line-height: 1.5;
+      padding: 10px;
     }
 
+    /* Top Menu Bar */
+    .menu-bar {
+      background: #0066CC;
+      color: white;
+      padding: 8px 15px;
+      display: flex;
+      gap: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+      z-index: 100;
+    }
+
+    .menu-item {
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .menu-item:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border-radius: 6px;
+      min-width: 160px;
+      z-index: 200;
+      padding: 6px 0;
+    }
+
+    .menu-item:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .dropdown a:hover {
+      background: var(--neutral);
+      color: var(--primary);
+    }
+
+    /* Form Container */
     .form-container {
       max-width: 520px;
-      margin: 0 auto;
+      margin: 20px auto;
       background: white;
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -33,7 +90,7 @@
 
     .section {
       padding: 25px 20px;
-      background: #FFF9E6;           /* Light yellow tint like original */
+      background: #FFF9E6;
     }
 
     .section + .section {
@@ -43,7 +100,7 @@
     h2 {
       color: var(--primary);
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       font-size: 22px;
       font-weight: 700;
     }
@@ -68,7 +125,6 @@
       border-radius: 6px;
       background: white;
       font-size: 16px;
-      color: var(--text);
     }
 
     input:focus, select:focus, textarea:focus {
@@ -102,38 +158,55 @@
     }
 
     .btn-reset {
-      background: #F9C74F;        /* Bright yellow like original */
+      background: #F9C74F;
       color: #2C3E50;
     }
 
     .btn-reset:hover {
       background: #f4b93a;
     }
-
-    /* Top blue bar like original */
-    .top-bar {
-      background: #0066CC;
-      color: white;
-      padding: 8px 15px;
-      font-size: 15px;
-      display: flex;
-      gap: 25px;
-    }
-
-    .top-bar span {
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Top menu bar -->
-  <div class="top-bar">
-    <span><strong>File</strong></span>
-    <span><strong>Edit</strong></span>
-    <span><strong>Format</strong></span>
+  <!-- Menu Bar -->
+  <div class="menu-bar">
+    
+    <!-- File Menu -->
+    <div class="menu-item">
+      File
+      <div class="dropdown">
+        <a href="#">→ New</a>
+        <a href="#">→ Open</a>
+        <a href="#">→ Save</a>
+        <a href="#">→ Print</a>
+        <a href="#">→ Close</a>
+      </div>
+    </div>
+
+    <!-- Edit Menu -->
+    <div class="menu-item">
+      Edit
+      <div class="dropdown">
+        <a href="#">Copy</a>
+        <a href="#">Cut</a>
+        <a href="#">Paste</a>
+      </div>
+    </div>
+
+    <!-- Format Menu -->
+    <div class="menu-item">
+      Format
+      <div class="dropdown">
+        <a href="#">Bold</a>
+        <a href="#">Italic</a>
+        <a href="#">Underline</a>
+      </div>
+    </div>
+
   </div>
 
+  <!-- Form -->
   <div class="form-container">
 
     <!-- Student Registration -->
@@ -163,62 +236,4 @@
         <option>Other</option>
       </select>
 
-      <label>Course/Program</label>
-      <input type="text" placeholder="">
-
-      <label>Year of Study</label>
-      <select>
-        <option>Select Year</option>
-        <option>Year 1</option>
-        <option>Year 2</option>
-        <option>Year 3</option>
-        <option>Year 4</option>
-      </select>
-
-      <label>Address</label>
-      <textarea rows="3"></textarea>
-
-      <label>Additional Comments</label>
-      <textarea rows="4"></textarea>
-
-      <div class="buttons">
-        <button class="btn-submit">Submit</button>
-        <button class="btn-reset">Reset</button>
-      </div>
-    </div>
-
-    <!-- Unit Registration -->
-    <div class="section">
-      <h2>Unit Registration</h2>
-
-      <label>Unit Name</label>
-      <input type="text" placeholder="">
-
-      <label>Unit Code</label>
-      <input type="text" placeholder="">
-
-      <label>Lecturer</label>
-      <input type="text" placeholder="">
-
-      <label>Semester</label>
-      <select>
-        <option>Select Semester</option>
-        <option>Semester 1</option>
-        <option>Semester 2</option>
-      </select>
-
-      <label style="margin-top: 18px; display: flex; align-items: center; gap: 10px;">
-        <input type="checkbox" style="width: auto; transform: scale(1.2);">
-        Active Unit
-      </label>
-
-      <div class="buttons">
-        <button class="btn-submit">Register</button>
-        <button class="btn-reset">Reset</button>
-      </div>
-    </div>
-
-  </div>
-
-</body>
-</html>
+      <label
